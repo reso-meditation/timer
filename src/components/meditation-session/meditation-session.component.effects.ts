@@ -1,16 +1,23 @@
 import type { Effects } from "@softer-components/types";
-import type { FullscreenService } from "../../services/full-screen.service.ts";
-import type { GongService } from "../../services/gong.service.ts";
 import type { TickingService } from "../../services/ticking.service.ts";
+import type { GongService } from "../../services/gong.service.ts";
+import type { FullScreenService } from "../../services/full-screen.service.ts";
 import type { WakeLockService } from "../../services/wake-lock.service.ts";
-import type { MeditationSessionContract } from "./meditation-session.component.ts";
+import { Contract } from "./meditation-session.component.contract.ts";
+
 const TICK_INTERVAL_MS = 1000;
-export const meditationSessionEffectsProvider = (
-  tickingService: TickingService,
-  gongService: GongService,
-  fullscreenService: FullscreenService,
-  wakeLockService: WakeLockService,
-): Effects<MeditationSessionContract> => ({
+export type Dependencies = {
+  tickingService: TickingService;
+  gongService: GongService;
+  fullScreenService: FullScreenService;
+  wakeLockService: WakeLockService;
+};
+export const effects = ({
+  tickingService,
+  gongService,
+  fullScreenService,
+  wakeLockService,
+}: Dependencies): Effects<Contract> => ({
   startTickingRequested: ({ timerTicked }) => {
     tickingService.startTicking(timerTicked, TICK_INTERVAL_MS);
   },
@@ -21,8 +28,8 @@ export const meditationSessionEffectsProvider = (
   stopGongRequested: gongService.stopAllAudio,
   requestWakeLockRequested: wakeLockService.requestWakeLock,
   releaseWakeLockRequested: wakeLockService.releaseWakeLock,
-  enterFullScreenRequested: fullscreenService.enterFullscreen,
-  exitFullScreenRequested: fullscreenService.exitFullscreen,
+  enterFullScreenRequested: fullScreenService.enterFullscreen,
+  exitFullScreenRequested: fullScreenService.exitFullscreen,
   exitRequested: ({ exitConfirmed }) => {
     setTimeout(exitConfirmed, 0);
   },

@@ -22,3 +22,18 @@ Statuts : ✅ fonctionne · ❌ bug · ⚠️ partiel
 **Bugs ouverts :**
 1. Le wakelock n'est pas relâché à la sortie de la session de méditation.
 2. Un bandeau blanc s'affiche en bas de l'écran en plein écran pendant la session.
+
+---
+
+## 2026-02-15 — `cfa4132` — iPhone et Android (application Reso)
+
+Repris de l'ancien fichier `versions/versions.md`.
+
+| Fonction | iPhone | Android |
+|---|---|---|
+| Wakelock 1 min | ✅ | ✅ |
+| Wakelock relâché après « Retour » | ❌ mode veille réactivé | ❌ mode veille réactivé |
+| Gong de début | ✅ | ✅ |
+| Gong de fin | ✅ | ✅ |
+| Plein écran | ⚠️ bandeau blanc en bas | ✅ |
+| Pas de bug « page non trouvée » | ✅ | ✅ |

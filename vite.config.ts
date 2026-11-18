@@ -1,5 +1,5 @@
 import react from "@vitejs/plugin-react";
-import * as path from "node:path";
+import path from "node:path";
 import { defineConfig } from "vitest/config";
 import packageJson from "./package.json" with { type: "json" };
 import { VitePWA } from "vite-plugin-pwa";
@@ -44,6 +44,7 @@ export default defineConfig({
       },
     }),
   ],
+
   server: {
     open: true,
   },

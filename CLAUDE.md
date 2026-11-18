@@ -16,3 +16,7 @@ git push origin main:production      # déploie sur Netlify
 ```
 
 Ne pas forcer (`--force`) ces push sans accord explicite : si le push est refusé, c'est que `production` contient des commits absents de `main`, à fusionner d'abord dans `main`.
+
+## Tests manuels
+
+Les tests faits sur appareil réel sont consignés dans `TESTS.md`, avec la branche et le commit testés. Quand l'utilisateur rapporte un test, ajouter une entrée en tête de la liste.
